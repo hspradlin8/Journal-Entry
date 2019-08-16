@@ -1,0 +1,16 @@
+fieldset {
+    display: flex;
+    flex-direction: column;
+    font-style: italic;
+}
+
+h1 {
+    font-family: Typadelic;
+    color: cornflowerblue;
+    font-style: italic;
+}
+
+button {
+    color: green;
+}
+
