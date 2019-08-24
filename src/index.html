@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="journal.css">
+    <link rel="stylesheet" href="styles/journal.css">
+    
 </head>
+
 <body>
+  
+<div class="main-section">
     <h1>Daily Journal</h1>
     <form action="">
-        <fieldset>
-            <label for="journalDate">Date of Entry</label>
-            <input type="date" name="journalDate" id="journalDate">
-        </fieldset>
-        <fieldset>
-                <label for="concepts">Concepts Covered</label>
+            <fieldset>
+                <label for="journalDate">Date of Entry</label>
+                <input type="date" name="journalDate" id="journalDate">
+            </fieldset>
+            <fieldset>
+                <div class="flex-container">
+                <label for="concepts" id="CC">Concepts Covered</label>
                 <input type="text" name="concepts" id="concepts">
-        </fieldset>
-        <fieldset>
-                <label for="journalEntry">Journal Entry</label>
-                <textarea rows="4" cols="50"></textarea> 
-        </fieldset>
-        <fieldset>
+            <div class="middle">   
                 <label for="mood">Mood for the Day</label>
-                <input type="text" name="mood" id="mood">
                 <select name="mood">
                     <option value="sad">Sad</option>
                     <option value="happy">Happy</option>
@@ -33,9 +33,19 @@
                     <option value="rage">Rage</option>
                     <option value="peaceful">Peaceful</option>
                     <option value="pumped">Pumped</option>
+                    <option value="overcast">Overcast</option>
+                    <option value="euphoric">Euphoric</option>
                 </select>
+            </div>    
+        </div>
+        </fieldset>
+        <fieldset>
+            <label for="journalEntry">Journal Entry</label>
+            <textarea rows="4" cols="50"></textarea>
         </fieldset>
         <button type="button">Record Journal</button>
     </form>
+</div>   
 </body>
+
 </html>

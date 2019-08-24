@@ -1,0 +1,47 @@
+body {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #8D4E97; 
+    background-image: url(image/galaxy.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* fill? */ 
+}
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-style: bold;
+    color:#8D4E97;
+    padding: 15px;
+    border: 7px solid #DA5178;
+}
+
+h1 {
+    font-family: Typadelic;
+    font-style: italic;
+    text-shadow: 1px 3px;
+    color: #DA5178;
+}
+button {
+    display: flex;
+    color: black;
+    background-color: #DA5178;
+    float: right;
+    height: 10%;
+    font-size: 1em;
+}
+.flex-container {
+    display: flex;
+    float: both;
+    clear:both;
+    padding: 7px; 
+}
+
+.middle,
+#CC {
+    padding: 10px;
+}
+
+
