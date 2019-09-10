@@ -16,3 +16,5 @@ const API = {
     }
 }
 console.log("Hey");
+
+export default API;

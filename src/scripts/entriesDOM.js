@@ -12,3 +12,6 @@ const makeJournalEntryComponent = (entry) =>{
     `
 }
 console.log("dom");
+
+
+export default makeJournalEntryComponent;
