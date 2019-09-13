@@ -11,6 +11,6 @@ const renderJournalEntries = (entries) =>{
         entryLog.innerHTML += makeJournalEntryComponent(entries[i]);  
     }
 }    
-console.log("component");
+//console.log("component");
 
 export default renderJournalEntries; 

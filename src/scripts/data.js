@@ -13,8 +13,18 @@ const API = {
     getJournalEntries () {
         return fetch("http://localhost:3000/entries")
             .then(response => response.json())
-    }
+    },
+    createEntry (newEntry) {
+        //console.log(newEntry);
+        return fetch(`http://localhost:3000/entries`, {
+            method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newEntry)
+        }).then(response => response.json())
+    }    
 }
-console.log("Hey");
+//console.log("Hey");
 
 export default API;
