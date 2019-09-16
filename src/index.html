@@ -14,8 +14,9 @@
   
 <div class="main-section">
     <h1>Daily Journal</h1>
+    <article class="entryLog" id="renderJournalEntries"></article>
     <form action="" id="formSet">
-            <article class="entryLog" id="renderJournalEntries"></article>
+            
             <fieldset>
                 <label for="journalDate">Date of Entry</label>
                 <input type="date" name="journalDate" id="journalDate" required>
@@ -27,15 +28,43 @@
             <div class="middle">   
                 <label for="mood">Mood for the Day</label>
                 <select name="mood" id="moods" required>
-                    <option value="sad">Sad</option>
-                    <option value="happy">Happy</option>
-                    <option value="worried">Worried</option>
-                    <option value="excited">Excited</option>
-                    <option value="rage">Rage</option>
-                    <option value="peaceful">Peaceful</option>
-                    <option value="pumped">Pumped</option>
-                    <option value="overcast">Overcast</option>
-                    <option value="euphoric">Euphoric</option>
+                    <div>
+                        <input type="radio" id="sad" name="drone" value="sad" checked>
+                        <label for="sad">Sad</label>
+                    </div>
+                    <div>
+                            <input type="radio" id="happy" name="drone" value="happy" checked>
+                            <label for="happy">Happy</label>
+                    </div>
+                    <div>
+                            <input type="radio" id="worried" name="drone" value="worried" checked>
+                            <label for="worried">Worried</label>
+                    </div>   
+                    <div>
+                            <input type="radio" id="excited" name="drone" value="excited" checked>
+                            <label for="excited">Excited</label>
+                    </div>   
+                    <div>
+                            <input type="radio" id="rage" name="drone" value="rage" checked>
+                            <label for="rage">Rage</label>
+                    </div>   
+                    <div>
+                            <input type="radio" id="peaceful" name="drone" value="peaceful" checked>
+                            <label for="peaceful">Peaceful</label>
+                    </div>   
+                    <div>
+                            <input type="radio" id="pumped" name="drone" value="pumped" checked>
+                            <label for="pumped">Pumped</label>
+                    </div>   
+                    <div>
+                            <input type="radio" id="overcast" name="drone" value="overcast" checked>
+                            <label for="overcast">Overcast</label>
+                    </div> 
+                    <div>
+                            <input type="radio" id="euphoric" name="drone" value="euphoric" checked>
+                            <label for="euphoric">Euphoric</label>
+                    </div> 
+                  
                 </select>
             </div>    
         </div>
@@ -53,3 +82,4 @@
 </body>
 
 </html>
+

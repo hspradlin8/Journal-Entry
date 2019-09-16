@@ -56,6 +56,14 @@ if (entryDate === "" || conceptsCovered === "" || journalEntryBox === "" || mood
 
 })
 
+const moodArray = document.getElementsByName("drone");
+    
+    moodArray.forEach(radioButton => {
+        radioButton.addEventListener("click", event => {
+            const moodName = event.target.value
+            console.log(moodName);
+        })
+    });
 
 
 // Use test() method :
