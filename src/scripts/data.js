@@ -27,25 +27,9 @@ const API = {
         }).then(response => response.json())
     }    
 }
-//console.log("Hey");
 
-getJournalEntries(); 
-const moodArray = document.getElementsByName("drone");
-
-
-filter()
 
 export default API;
 
 
-// <script>
-// var ages = [32, 33, 12, 40];
 
-// function checkAdult(age) {
-//   return age >= document.getElementById("ageToCheck").value;
-// }
-
-// function myFunction() {
-//   document.getElementById("demo").innerHTML = ages.filter(checkAdult);
-// }
-// </script>

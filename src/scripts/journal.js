@@ -3,11 +3,11 @@
 // but should not immediately run it.
 
 import API from "./data.js"
-import renderJournalEntries from "./entryComponent.js"
+import entriesDOM from "./entriesDOM.js"
 
 API.getJournalEntries()
-    .then(taco => {
-        renderJournalEntries(taco)
+    .then(data => {
+        entriesDOM.renderJournalEntries(data)
     });
 
 function createJournalEntry() {
@@ -57,21 +57,24 @@ if (entryDate === "" || conceptsCovered === "" || journalEntryBox === "" || mood
 })
 
 const moodArray = document.getElementsByName("drone");
+ 
     
-    moodArray.forEach(radioButton => {
+moodArray.forEach(radioButton => {
         radioButton.addEventListener("click", event => {
-            const moodName = event.target.value
+            const moodName = event.target.value;
             console.log(moodName);
+            API.getJournalEntries()
+            .then(data => {
+                entriesDOM.filterMood(data, moodName);
+            });
         })
     });
 
+  
 
-// Use test() method :
-
-// var term = "sample1";
-// var re = new RegExp("^([a-z0-9]{5,})$");
-// if (re.test(term)) {
-//     console.log("Valid");
-// } else {
-//     console.log("Invalid");
-// }
+    
+// 1. click on the button
+//2. save the button value into a variable
+//3. fetch all the entries
+//4. filter entries to see if mood matches the variable containing the button value 
+//5. then print it to the DOM 
