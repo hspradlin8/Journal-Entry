@@ -55,6 +55,41 @@
       "moodOfTheDay": "sad",
       "entry": "",
       "id": 8
+    },
+    {
+      "dateOfEntry": "2019-09-13",
+      "conceptsCovered": "lab time ",
+      "moodOfTheDay": "excited",
+      "entry": "we had lab time",
+      "id": 9
+    },
+    {
+      "dateOfEntry": "2019-09-13",
+      "conceptsCovered": "work",
+      "moodOfTheDay": "peaceful",
+      "entry": "work work work",
+      "id": 10
+    },
+    {
+      "dateOfEntry": "",
+      "conceptsCovered": "",
+      "moodOfTheDay": "sad",
+      "entry": "",
+      "id": 11
+    },
+    {
+      "dateOfEntry": "",
+      "conceptsCovered": "59",
+      "moodOfTheDay": "sad",
+      "entry": "%%%",
+      "id": 12
+    },
+    {
+      "dateOfEntry": "2019-09-19",
+      "conceptsCovered": "$#",
+      "moodOfTheDay": "sad",
+      "entry": "@@#",
+      "id": 13
     }
   ]
 }
