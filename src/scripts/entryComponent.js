@@ -8,6 +8,8 @@ const makeJournalEntryComponent = (entry) =>{
         <p>${entry.conceptsCovered}</p>
         <p>${entry.moodOfTheDay}</p>
         <p>${entry.entry}</p>
+        <button type="button" id="editButton--${entry.id}">Edit</button>
+        <button type="button" id="deleteButton--${entry.id}">Delete</button>
     </div>
     `
 }

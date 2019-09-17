@@ -25,11 +25,24 @@ const API = {
                 },
                 body: JSON.stringify(newEntry)
         }).then(response => response.json())
-    }    
+    }, // deletes journal entry 
+    deleteEntry: (id) => {
+        return fetch(`http://localhost:3000/entries/${id}`, {
+            method: "DELETE"
+        }).then(response => response.json())
+    }, 
+    editEntry: (id) => {
+        return fetch(`http://localhost:3000/entries/${id}`, {
+            method: "EDIT"
+        }).then(response => response.json())
+    },   
 }
 
 
 export default API;
 
 
+//fetch - edit and delete (one of each)
+//create button event listener
+//call the API in journal.js- same as the save
 
