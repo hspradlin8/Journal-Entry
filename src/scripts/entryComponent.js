@@ -10,6 +10,7 @@ const makeJournalEntryComponent = (entry) =>{
         <p>${entry.entry}</p>
         <button type="button" id="editButton--${entry.id}">Edit</button>
         <button type="button" id="deleteButton--${entry.id}">Delete</button>
+        <input type="hidden" id="editedEntry" value="">
     </div>
     `
 }

@@ -35,7 +35,12 @@ const API = {
         return fetch(`http://localhost:3000/entries/${id}`, {
             method: "EDIT"
         }).then(response => response.json())
-    },   
+    }, 
+    getSpecificEntry: (id) => {
+        console.log();
+        return fetch(`http://localhost:3000/entries${id}`)
+            .then(response => response.json())
+    },  
 }
 
 

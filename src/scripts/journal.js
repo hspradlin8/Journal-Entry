@@ -56,19 +56,13 @@ document.querySelector("#recordButton").addEventListener("click", (event) => {
 
 })
 
-const moodArray = document.getElementsByName("drone");
-
-
-moodArray.forEach(radioButton => {
-    radioButton.addEventListener("click", event => {
-        const moodName = event.target.value;
-        console.log(moodName);
-        API.getJournalEntries()
-            .then(data => {
-                entriesDOM.filterMood(data, moodName);
-            });
-    })
-});
+document.querySelector("#filterMood").addEventListener("input", event => {
+    let moody = event.target.value;
+    console.log(moody);
+    API.getJournalEntries().then(data => {
+        entriesDOM.filterMood(data, moody);
+})
+})
 
 // 1. click on the button
 //2. save the button value into a variable
@@ -90,24 +84,39 @@ document.querySelector(".entryLog").addEventListener("click", (event) => {
                 //entries.forEach(entry => {  // might NOT need this foreach
                 //  needs to send donut to DOM
             })
-    } else if (event.target.id.startsWith("editButton")) {  //Editing a single Donut 
-        editForm(event.target.id.split("--")[1])  // Invoke the editForm function from editForm.js, slpitting the content between -- and passing only the second [1] "element" 
-    }
+    } else if (event.target.id.startsWith("editButton")) {
+  //      console.log(editButton);  //Editing a single entry 
+        let entryIdtoEdit=event.target.id.split("--")[1]
+        editFormFields(entryIdtoEdit)
+        API.getJournalEntries().then(data => entriesDOM.renderJournalEntries(data));  // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
+    } 
 });
 
-// We will create an eventListener for the saveDonut button if you modify a donut
+const editFormFields  = entryIdtoEdit => {
+    let hiddenId = document.querySelector("#editedEntry")
+    let dateInput = document.querySelector("#eJournalDate")
+    let moodInput = document.querySelector("#eMood")
+    let conceptsInput = document.querySelector("#eConcept")
+    let entryInput = document.querySelector("#eJournalEntry")
+    
+    API.getSpecificEntry(entryIdtoEdit).then(entry => {
+        console.log(entry)
+        hiddenId.value = entry.id;
+        moodInput.value = entry.moodOfTheDay;
+        dateInput.value = entry.dateOfEntry;
+        conceptsInput.value = entry.conceptsCovered;
+        entryInput.value = entry.entry;
+        console.log("entry.moodId is:" + entry.moodOfTheDay)
+})}
 
-// document.querySelector("#saveDonut").addEventListener("click", (event) => {
-//     API.editDonut(document.querySelector("#donutId").value)
-//         .then((response => {
-//             document.querySelector("#donutName").value = "";
-//             document.querySelector("#donut-results").innerHTML = "";
-//             API.getDonuts().then((allDonuts) => {
-//                 allDonuts.forEach(donut => {
-//                     addDonutToDOM(donut)
-//                 })
-//             })
 
-//         }))
-// })
+
+// Editing entries: 
+// 1.Add edit button to journal entry- added it to data.js 
+// 2.Add hidden input field to form to store id value of edited entry- added it to entryComponent.js 
+// 3.Add event listener to button. Give unique id which includes id property of entry
+// 4.When clicked, get the individual entry and populate the form fields with text content.
+// 5.When user clicks the save button, determine if editing or creating (does hidden input field have a value?)
+// 6.If editing, perform a PUT request to the API
+// 7.Get all entries and display again
 

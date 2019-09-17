@@ -7,80 +7,108 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="styles/journal.css">
-    
+
 </head>
 
 <body>
-  
-<div class="main-section">
-    <h1>Daily Journal</h1>
-    <article class="entryLog" id="renderJournalEntries"></article>
-    <form action="" id="formSet">
-            
+
+    <div class="main-section">
+        <h1>Daily Journal</h1>
+
+        <form action="" id="formSet">
+
             <fieldset>
                 <label for="journalDate">Date of Entry</label>
                 <input type="date" name="journalDate" id="journalDate" required>
             </fieldset>
             <fieldset>
                 <div class="flex-container">
+                    <label for="concepts" id="CC">Concepts Covered</label>
+                    <input type="text" name="concepts" id="concepts" required>
+                    <div class="middle">
+                        <label for="mood">Mood for the Day</label>
+                        <input type="text" name="mood" id="mood">
+                        <select name="mood">
+                            <option value="sad">Sad</option>
+                            <option value="happy">Happy</option>
+                            <option value="worried">Worries</option>
+                            <option value="excited">Excited</option>
+                            <option value="rage">Rage</option>
+                            <option value="peaceful">Peaceful</option>
+                            <option value="pumped">Pumped</option>
+                            <option value="overcast">Overcast</option>
+                            <option value="euphoric">Euphoric</option>
+
+                        </select>
+
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <label for="journalEntry">Journal Entry</label>
+                <textarea rows="4" cols="50" id="journalEntry" required></textarea>
+            </fieldset>
+
+            <button type="button" id="recordButton">Record Journal</button>
+        </form>
+    </div>
+    <div>
+        <label for="mood">Mood for the Day</label>
+        <select name="mood" id="filterMood">
+            <option value="sad">Sad</option>
+            <option value="happy">Happy</option>
+            <option value="worried">Worries</option>
+            <option value="excited">Excited</option>
+            <option value="rage">Rage</option>
+            <option value="peaceful">Peaceful</option>
+            <option value="pumped">Pumped</option>
+            <option value="overcast">Overcast</option>
+            <option value="euphoric">Euphoric</option>
+
+        </select>
+
+    </div>
+    <article class="entryLog" id="renderJournalEntries"></article>
+    <script type="module" src="scripts/journal.js"></script>
+    <form action="" id="formSet">
+        <fieldset>
+            <label for="journalDate">Date of Entry</label>
+            <input type="date" name="journalDate" id="eJournalDate" required>
+        </fieldset>
+        <fieldset>
+            <div class="flex-container">
                 <label for="concepts" id="CC">Concepts Covered</label>
-                <input type="text" name="concepts" id="concepts" required>
-            <div class="middle">   
-                <label for="mood">Mood for the Day</label>
-                <select name="mood" id="moods" required>
-                    <div>
-                        <input type="radio" id="sad" name="drone" value="sad" checked>
-                        <label for="sad">Sad</label>
-                    </div>
-                    <div>
-                            <input type="radio" id="happy" name="drone" value="happy" checked>
-                            <label for="happy">Happy</label>
-                    </div>
-                    <div>
-                            <input type="radio" id="worried" name="drone" value="worried" checked>
-                            <label for="worried">Worried</label>
-                    </div>   
-                    <div>
-                            <input type="radio" id="excited" name="drone" value="excited" checked>
-                            <label for="excited">Excited</label>
-                    </div>   
-                    <div>
-                            <input type="radio" id="rage" name="drone" value="rage" checked>
-                            <label for="rage">Rage</label>
-                    </div>   
-                    <div>
-                            <input type="radio" id="peaceful" name="drone" value="peaceful" checked>
-                            <label for="peaceful">Peaceful</label>
-                    </div>   
-                    <div>
-                            <input type="radio" id="pumped" name="drone" value="pumped" checked>
-                            <label for="pumped">Pumped</label>
-                    </div>   
-                    <div>
-                            <input type="radio" id="overcast" name="drone" value="overcast" checked>
-                            <label for="overcast">Overcast</label>
-                    </div> 
-                    <div>
-                            <input type="radio" id="euphoric" name="drone" value="euphoric" checked>
-                            <label for="euphoric">Euphoric</label>
-                    </div> 
-                  
-                </select>
-            </div>    
-        </div>
+                <input type="text" name="concepts" id="eConcepts" required>
+                <div class="middle">
+                    <label for="mood">Mood for the Day</label>
+                    <input type="text" name="mood" id="eMood">
+                    <select name="mood">
+                        <option value="sad">Sad</option>
+                        <option value="happy">Happy</option>
+                        <option value="worried">Worries</option>
+                        <option value="excited">Excited</option>
+                        <option value="rage">Rage</option>
+                        <option value="peaceful">Peaceful</option>
+                        <option value="pumped">Pumped</option>
+                        <option value="overcast">Overcast</option>
+                        <option value="euphoric">Euphoric</option>
+
+                    </select>
+
+                </div>
+            </div>
         </fieldset>
         <fieldset>
             <label for="journalEntry">Journal Entry</label>
-            <textarea rows="4" cols="50" id="journalEntry" required></textarea>
+            <textarea rows="4" cols="50" id="eJournalEntry" required></textarea>
         </fieldset>
-        
+
         <button type="button" id="recordButton">Record Journal</button>
     </form>
-</div>  
-
-<script type="module"src="scripts/journal.js"></script>
-
+    </div>
+    </div>
+    </fieldset>
+    </form>
 </body>
 
 </html>
-
