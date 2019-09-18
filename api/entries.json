@@ -1,20 +1,6 @@
 {
   "entries": [
     {
-      "id": 1,
-      "dateOfEntry": "August 19th",
-      "conceptsCovered": "no class-lab day",
-      "moodOfTheDay": "euphoric",
-      "entry": "worked on the daily journal page with css. I also added css to the govtrack page."
-    },
-    {
-      "id": 2,
-      "dateOfEntry": "August 20th",
-      "conceptsCovered": "C33 Demo Day",
-      "moodOfTheDay": "peaceful",
-      "entry": "We watched C33 Demos. That afternoon we were split into group and started on group projects."
-    },
-    {
       "id": 3,
       "dateOfEntry": "August 21st",
       "conceptsCovered": "Group Project",
@@ -27,13 +13,6 @@
       "moodOfTheDay": "sad",
       "entry": "",
       "id": 4
-    },
-    {
-      "dateOfEntry": "2019-09-12",
-      "conceptsCovered": "journal part 7",
-      "moodOfTheDay": "overcast",
-      "entry": "worked on journal part 7. ",
-      "id": 5
     },
     {
       "dateOfEntry": "2019-09-12",
@@ -52,44 +31,16 @@
     {
       "dateOfEntry": "",
       "conceptsCovered": "",
-      "moodOfTheDay": "sad",
+      "moodOfTheDay": "",
       "entry": "",
       "id": 8
     },
     {
-      "dateOfEntry": "2019-09-13",
-      "conceptsCovered": "lab time ",
-      "moodOfTheDay": "excited",
-      "entry": "we had lab time",
-      "id": 9
-    },
-    {
-      "dateOfEntry": "2019-09-13",
-      "conceptsCovered": "work",
-      "moodOfTheDay": "peaceful",
-      "entry": "work work work",
-      "id": 10
-    },
-    {
       "dateOfEntry": "",
       "conceptsCovered": "",
-      "moodOfTheDay": "sad",
+      "moodOfTheDay": "",
       "entry": "",
-      "id": 11
-    },
-    {
-      "dateOfEntry": "",
-      "conceptsCovered": "59",
-      "moodOfTheDay": "sad",
-      "entry": "%%%",
-      "id": 12
-    },
-    {
-      "dateOfEntry": "2019-09-19",
-      "conceptsCovered": "$#",
-      "moodOfTheDay": "sad",
-      "entry": "@@#",
-      "id": 13
+      "id": 9
     }
   ]
 }
