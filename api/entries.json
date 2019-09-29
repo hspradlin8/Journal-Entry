@@ -8,13 +8,6 @@
       "entry": "We worked on our group project and decided how to layout our webpage. We picked an artist that we wanted to make a tribute page for."
     },
     {
-      "dateOfEntry": "",
-      "conceptsCovered": "",
-      "moodOfTheDay": "sad",
-      "entry": "",
-      "id": 4
-    },
-    {
       "dateOfEntry": "2019-09-12",
       "conceptsCovered": "functions ",
       "moodOfTheDay": "overcast",
@@ -29,18 +22,32 @@
       "id": 7
     },
     {
-      "dateOfEntry": "",
-      "conceptsCovered": "",
+      "dateOfEntry": "2019-09-26",
+      "conceptsCovered": "test",
       "moodOfTheDay": "",
-      "entry": "",
-      "id": 8
+      "entry": "testing ",
+      "id": 10
     },
     {
-      "dateOfEntry": "",
-      "conceptsCovered": "",
-      "moodOfTheDay": "",
-      "entry": "",
-      "id": 9
-    }
+      "dateOfEntry": "2019-09-26",
+      "conceptsCovered": "test one ",
+      "moodOfTheDay": "sad",
+      "entry": "testing ",
+      "id": 11
+    },
+    {
+      "dateOfEntry": "2019-09-27",
+      "conceptsCovered": "test 3",
+      "moodOfTheDay": "excited",
+      "entry": "testing again",
+      "id": 12
+    },
+    {
+      "dateOfEntry": "2019-09-26",
+      "conceptsCovered": "test",
+      "moodOfTheDay": "sad",
+      "entry": "tst",
+      "id": 13
+    },
   ]
 }

@@ -1,13 +1,19 @@
-body {
+ body {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #8D4E97; 
-    background-image: url(image/galaxy.jpg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    /* fill? */ 
+    height: 80%;
+    background-color: cornflowerblue;
 }
+
+/* .img{
+    background-image: url(image/jellyfish.jpg);
+    background-repeat: no-repeat;
+    background: cover;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%; 
+} */
 fieldset {
     display: flex;
     flex-wrap: wrap;
@@ -15,20 +21,21 @@ fieldset {
     font-style: bold;
     color:black;
     padding: 15px;
-    border: 7px solid #DA5178;
+    border: 7px solid goldenrod;
+    max-width: 75%;
+    align-content: center;
 }
 
 h1 {
     font-family: Typadelic;
     font-style: italic;
     text-shadow: 1px 3px;
-    color: #DA5178;
+    color: #D4999E;
 }
 button {
     display: flex;
     color: black;
-    background-color: #DA5178;
-    float: right;
+    background-color: goldenrod;
     height: 10%;
     font-size: 1em;
 }

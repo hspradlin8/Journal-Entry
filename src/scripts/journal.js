@@ -32,13 +32,13 @@ document.querySelector("#recordButton").addEventListener("click", (event) => {
     const conceptsCovered = document.querySelector("#concepts").value;
     const journalEntryBox = document.querySelector("#journalEntry").value;
     const moodDrop = document.querySelector("#moods").value;
-    var re = new RegExp("^([a-z0-9]{5,})$");
-    if (entryDate === "" || conceptsCovered === "" || journalEntryBox === "" || moodDrop === "") {
-        alert("code is invalid");
-        //put validation here://
-        //} else if (re.test(entryDate)){ //(entryDate === !letters || conceptsCovered === !letters || journalEntryBox === !letters || moodDrop === !letters){
-        alert("code is extermely invalid");
-    }
+    // var re = new RegExp("^([a-z0-9]{5,})$");
+    // if (entryDate === "" || conceptsCovered === "" || journalEntryBox === "" || moodDrop === "") {
+    //     alert("code is invalid");
+    //     //put validation here://
+    //     //} else if (re.test(entryDate)){ //(entryDate === !letters || conceptsCovered === !letters || journalEntryBox === !letters || moodDrop === !letters){
+    //     alert("code is extermely invalid");
+    // }
     const newEntry = createJournalEntry();
 
     API.createEntry(newEntry)
@@ -48,12 +48,12 @@ document.querySelector("#recordButton").addEventListener("click", (event) => {
             document.querySelector("#concepts").value = "";
             document.querySelector("#journalEntry").value = "";
             document.querySelector(".entryLog").innerHTML = "";
+            console.log("hello");
             API.getJournalEntries()
                 .then(data => {
-                    renderJournalEntries(data)
+                    entriesDOM.renderJournalEntries(data)
                 });
         })
-
 })
 
 document.querySelector("#filterMood").addEventListener("input", event => {
@@ -61,7 +61,7 @@ document.querySelector("#filterMood").addEventListener("input", event => {
     console.log(moody);
     API.getJournalEntries().then(data => {
         entriesDOM.filterMood(data, moody);
-})
+    })
 })
 
 // 1. click on the button
@@ -85,20 +85,20 @@ document.querySelector(".entryLog").addEventListener("click", (event) => {
                 //  needs to send donut to DOM
             })
     } else if (event.target.id.startsWith("editButton")) {
-  //      console.log(editButton);  //Editing a single entry 
-        let entryIdtoEdit=event.target.id.split("--")[1]
+        //      console.log(editButton);  //Editing a single entry 
+        let entryIdtoEdit = event.target.id.split("--")[1]
         editFormFields(entryIdtoEdit)
         API.getJournalEntries().then(data => entriesDOM.renderJournalEntries(data));  // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
-    } 
+    }
 });
 
-const editFormFields  = entryIdtoEdit => {
+const editFormFields = entryIdtoEdit => {
     let hiddenId = document.querySelector("#editedEntry")
     let dateInput = document.querySelector("#eJournalDate")
     let moodInput = document.querySelector("#eMood")
     let conceptsInput = document.querySelector("#eConcept")
     let entryInput = document.querySelector("#eJournalEntry")
-    
+
     API.getSpecificEntry(entryIdtoEdit).then(entry => {
         console.log(entry)
         hiddenId.value = entry.id;
@@ -107,7 +107,8 @@ const editFormFields  = entryIdtoEdit => {
         conceptsInput.value = entry.conceptsCovered;
         entryInput.value = entry.entry;
         console.log("entry.moodId is:" + entry.moodOfTheDay)
-})}
+    })
+}
 
 
 
