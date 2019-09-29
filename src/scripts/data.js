@@ -9,16 +9,16 @@
 //         renderJournalEntries(parsedEntries);
 //     });
 //     console.log("data");
-
+let url = "http://localhost:3000/entries";
 
 const API = {
     getJournalEntries () {
-        return fetch("http://localhost:3000/entries")
+        return fetch(url)
             .then(response => response.json())
     },
     createEntry (newEntry) {
         //console.log(newEntry);
-        return fetch(`http://localhost:3000/entries`, {
+        return fetch(url, {
             method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -27,18 +27,18 @@ const API = {
         }).then(response => response.json())
     }, // deletes journal entry 
     deleteEntry: (id) => {
-        return fetch(`http://localhost:3000/entries/${id}`, {
+        return fetch(`url/${id}`, {
             method: "DELETE"
         }).then(response => response.json())
     }, 
     editEntry: (id) => {
-        return fetch(`http://localhost:3000/entries/${id}`, {
+        return fetch(`url/${id}`, {
             method: "EDIT"
         }).then(response => response.json())
     }, 
     getSpecificEntry: (id) => {
         console.log();
-        return fetch(`http://localhost:3000/entries${id}`)
+        return fetch(`url/${id}`)
             .then(response => response.json())
     },  
 }
