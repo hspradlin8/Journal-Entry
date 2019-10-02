@@ -78,9 +78,12 @@ document.querySelector(".entryLog").addEventListener("click", (event) => {
         document.querySelector(".entryLog").innerHTML = "";
         // Extract delete button id from button's id attribute
         API.deleteEntry(event.target.id.split("--")[1]) // refers to the deleteEntry from data.js 
-            .then(() => {
+            .then((entry) => {
+                console.log(entry)
+                document.querySelector(".entryLog").innerHTML = "";
                 //  get all the donuts again
-                API.getJournalEntries().then(entry => entriesDOM.renderJournalEntries(entry));
+                API.getJournalEntries()
+                .then(entry => entriesDOM.renderJournalEntries(entry));
                 //entries.forEach(entry => {  // might NOT need this foreach
                 //  needs to send donut to DOM
             })
@@ -88,7 +91,8 @@ document.querySelector(".entryLog").addEventListener("click", (event) => {
         //      console.log(editButton);  //Editing a single entry 
         let entryIdtoEdit = event.target.id.split("--")[1]
         editFormFields(entryIdtoEdit)
-        API.getJournalEntries().then(data => entriesDOM.renderJournalEntries(data));  // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
+        API.getJournalEntries()
+        .then(data => entriesDOM.renderJournalEntries(data));  // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
     }
 });
 

@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "id": 3,
-      "dateOfEntry": "August 21st",
-      "conceptsCovered": "Group Project",
-      "moodOfTheDay": "Pumped",
-      "entry": "We worked on our group project and decided how to layout our webpage. We picked an artist that we wanted to make a tribute page for."
-    },
-    {
       "dateOfEntry": "2019-09-12",
       "conceptsCovered": "functions ",
       "moodOfTheDay": "overcast",
@@ -48,6 +41,6 @@
       "moodOfTheDay": "sad",
       "entry": "tst",
       "id": 13
-    },
+    }
   ]
 }

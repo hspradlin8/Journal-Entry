@@ -12,35 +12,40 @@
 let url = "http://localhost:3000/entries";
 
 const API = {
-    getJournalEntries () {
+    getJournalEntries() {
         return fetch(url)
             .then(response => response.json())
     },
-    createEntry (newEntry) {
+    createEntry(newEntry) {
         //console.log(newEntry);
         return fetch(url, {
             method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newEntry)
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newEntry)
         }).then(response => response.json())
     }, // deletes journal entry 
     deleteEntry: (id) => {
-        return fetch(`url/${id}`, {
-            method: "DELETE"
+        return fetch(`${url}/${id}`, {
+            method: "DELETE",
         }).then(response => response.json())
-    }, 
+        .then(entry => console.log(entry))
+    },
     editEntry: (id) => {
-        return fetch(`url/${id}`, {
-            method: "EDIT"
+        return fetch(`${url}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newEntry)
         }).then(response => response.json())
-    }, 
+    },
     getSpecificEntry: (id) => {
         console.log();
-        return fetch(`url/${id}`)
+        return fetch(`${url}/${id}`)
             .then(response => response.json())
-    },  
+    },
 }
 
 
