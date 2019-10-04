@@ -1,13 +1,6 @@
 {
   "entries": [
     {
-      "dateOfEntry": "2019-09-12",
-      "conceptsCovered": "functions ",
-      "moodOfTheDay": "overcast",
-      "entry": "learned more functions ",
-      "id": 6
-    },
-    {
       "dateOfEntry": "2019-09-19",
       "conceptsCovered": "functions again",
       "moodOfTheDay": "sad",
@@ -36,10 +29,10 @@
       "id": 12
     },
     {
-      "dateOfEntry": "2019-09-26",
-      "conceptsCovered": "test",
-      "moodOfTheDay": "sad",
-      "entry": "tst",
+      "dateOfEntry": "2019-10-12",
+      "conceptsCovered": "save new entry",
+      "moodOfTheDay": "rage",
+      "entry": "new entry ",
       "id": 13
     }
   ]

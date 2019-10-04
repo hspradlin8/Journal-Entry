@@ -24,55 +24,55 @@ function createJournalEntry() {
 }
 
 
-document.querySelector("#recordButton").addEventListener("click", (event) => {
-    //validate code .includes method- only takes one thng at a time. Will have to call it multiple times.
-    // collect enrty data into object
-    // pass object to createEntry function 
-    const entryDate = document.querySelector("#journalDate").value;
-    const conceptsCovered = document.querySelector("#concepts").value;
-    const journalEntryBox = document.querySelector("#journalEntry").value;
-    const moodDrop = document.querySelector("#moods").value;
-    // var re = new RegExp("^([a-z0-9]{5,})$");
-    // if (entryDate === "" || conceptsCovered === "" || journalEntryBox === "" || moodDrop === "") {
-    //     alert("code is invalid");
-    //     //put validation here://
-    //     //} else if (re.test(entryDate)){ //(entryDate === !letters || conceptsCovered === !letters || journalEntryBox === !letters || moodDrop === !letters){
-    //     alert("code is extermely invalid");
-    // }
-    const newEntry = createJournalEntry();
+let entryId = ""
+document.addEventListener("click", (event) => {
+    console.log(event.target.className)
+    if (event.target.id.startsWith === "recordButton") {
 
-    API.createEntry(newEntry)
-        .then(response => {
-            console.log("response", response);
-            document.querySelector("#journalDate").value = "";
-            document.querySelector("#concepts").value = "";
-            document.querySelector("#journalEntry").value = "";
-            document.querySelector(".entryLog").innerHTML = "";
-            console.log("hello");
-            API.getJournalEntries()
-                .then(data => {
-                    entriesDOM.renderJournalEntries(data)
-                });
+        //validate code .includes method- only takes one thng at a time. Will have to call it multiple times.
+        // collect enrty data into object
+        // pass object to createEntry function 
+        const entryDate = document.querySelector("#journalDate").value;
+        const conceptsCovered = document.querySelector("#concepts").value;
+        const journalEntryBox = document.querySelector("#journalEntry").value;
+        const moodDrop = document.querySelector("#moods").value;
+        // var re = new RegExp("^([a-z0-9]{5,})$");
+        // if (entryDate === "" || conceptsCovered === "" || journalEntryBox === "" || moodDrop === "") {
+        //     alert("code is invalid");
+        //     //put validation here://
+        //     //} else if (re.test(entryDate)){ //(entryDate === !letters || conceptsCovered === !letters || journalEntryBox === !letters || moodDrop === !letters){
+        //     alert("code is extermely invalid");
+        // }
+        const newEntry = createJournalEntry();
+
+        API.createEntry(newEntry)
+            .then(response => {
+                console.log("response", response);
+                document.querySelector("#journalDate").value = "";
+                document.querySelector("#concepts").value = "";
+                document.querySelector("#journalEntry").value = "";
+                document.querySelector(".entryLog").innerHTML = "";
+                console.log("hello");
+                API.getJournalEntries()
+                    .then(data => {
+                        entriesDOM.renderJournalEntries(data)
+                    });
+            })
+    } else if (event.target.id.startsWith("filterMood")) {
+        let moody = event.target.value;
+        console.log(moody);
+        API.getJournalEntries().then(data => {
+            entriesDOM.filterMood(data, moody);
         })
-})
+    } else if (event.target.id.startsWith("deleteButton--")) {  // if the id starts with deleteButton--
 
-document.querySelector("#filterMood").addEventListener("input", event => {
-    let moody = event.target.value;
-    console.log(moody);
-    API.getJournalEntries().then(data => {
-        entriesDOM.filterMood(data, moody);
-    })
-})
+        // 1. click on the button
+        //2. save the button value into a variable
+        //3. fetch all the entries
+        //4. filter entries to see if mood matches the variable containing the button value 
+        //5. then print it to the DOM 
 
-// 1. click on the button
-//2. save the button value into a variable
-//3. fetch all the entries
-//4. filter entries to see if mood matches the variable containing the button value 
-//5. then print it to the DOM 
-
-// get container that is holding my delete and edit button 
-document.querySelector(".entryLog").addEventListener("click", (event) => {
-    if (event.target.id.startsWith("deleteButton--")) {  // if the id starts with deleteButton--
+        // get container that is holding my delete and edit button 
         // clear donut-container before adding new donut
         console.log(event.target.id.split("--")[1]);
         document.querySelector(".entryLog").innerHTML = "";
@@ -83,38 +83,64 @@ document.querySelector(".entryLog").addEventListener("click", (event) => {
                 document.querySelector(".entryLog").innerHTML = "";
                 //  get all the donuts again
                 API.getJournalEntries()
-                .then(entry => entriesDOM.renderJournalEntries(entry));
+                    .then(entry => entriesDOM.renderJournalEntries(entry));
                 //entries.forEach(entry => {  // might NOT need this foreach
                 //  needs to send donut to DOM
             })
     } else if (event.target.id.startsWith("editButton")) {
         //      console.log(editButton);  //Editing a single entry 
+        entryId = event.target.id.split("--")[1]
         let entryIdtoEdit = event.target.id.split("--")[1]
         editFormFields(entryIdtoEdit)
-        API.getJournalEntries()
-        .then(data => entriesDOM.renderJournalEntries(data));  // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
+        // doc.innerHTML = ""
+    } else if (event.target.className === "editRecordButton") {
+        saveEditEntry(entryId)
+              // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
     }
-});
+})
 
 const editFormFields = entryIdtoEdit => {
     let hiddenId = document.querySelector("#editedEntry")
     let dateInput = document.querySelector("#eJournalDate")
     let moodInput = document.querySelector("#eMood")
-    let conceptsInput = document.querySelector("#eConcept")
+    let conceptsInput = document.querySelector("#eConcepts")
     let entryInput = document.querySelector("#eJournalEntry")
 
     API.getSpecificEntry(entryIdtoEdit).then(entry => {
         console.log(entry)
-        hiddenId.value = entry.id;
+        let entryId = entry.id;
+        hiddenId.value = entryId;
         moodInput.value = entry.moodOfTheDay;
         dateInput.value = entry.dateOfEntry;
         conceptsInput.value = entry.conceptsCovered;
         entryInput.value = entry.entry;
-        console.log("entry.moodId is:" + entry.moodOfTheDay)
+        console.log("entry.moodId is:", entry.moodOfTheDay)
     })
 }
 
+function saveEditEntry(entryId) {
+    let dateInput = document.querySelector("#eJournalDate")
+    let moodInput = document.querySelector("#eMood")
+    let conceptsInput = document.querySelector("#eConcepts")
+    let entryInput = document.querySelector("#eJournalEntry")
+    let newEntry = {
+        dateOfEntry: dateInput.value,
+        entry: entryInput.value,
+        conceptsCovered: conceptsInput.value,
+        moodOfTheDay: moodInput.value
+    }
+    API.editEntry(entryId, newEntry).then(response => response)
+    .then( () =>
+                document.querySelector(".entryLog").innerHTML = "")
+            .then( () => 
+                API.getJournalEntries()
+                )
+                .then(data => entriesDOM.renderJournalEntries(data))
+}
 
+
+
+// make new obj, then pull obj from that API
 
 // Editing entries: 
 // 1.Add edit button to journal entry- added it to data.js 

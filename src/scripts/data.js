@@ -32,7 +32,8 @@ const API = {
         }).then(response => response.json())
         .then(entry => console.log(entry))
     },
-    editEntry: (id) => {
+    editEntry: (id, newEntry) => {
+        console.log("new entry", id, newEntry)
         return fetch(`${url}/${id}`, {
             method: "PUT",
             headers: {
@@ -46,6 +47,7 @@ const API = {
         return fetch(`${url}/${id}`)
             .then(response => response.json())
     },
+    
 }
 
 
