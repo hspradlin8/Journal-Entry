@@ -63,8 +63,14 @@
                 <option value="euphoric">Euphoric</option>
 
             </select>
-
+<!--search input section-->
         </div>
+        <div id="entrySearch">
+            <label for="entrySearch">Search Entries</label>
+            <input type="text" placeholder="Search your entries" id="searchBox"/>
+            <element onkeypress="searchEntries()"></element>
+        </div>
+        <!--end of search input section-->
         <article class="entryLog" id="renderJournalEntries"></article>
         <script type="module" src="scripts/journal.js"></script>
         <form action="" id="formSet">

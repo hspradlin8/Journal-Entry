@@ -33,7 +33,7 @@ const API = {
         .then(entry => console.log(entry))
     },
     editEntry: (id, newEntry) => {
-        console.log("new entry", id, newEntry)
+        //console.log("new entry", id, newEntry)
         return fetch(`${url}/${id}`, {
             method: "PUT",
             headers: {
@@ -43,7 +43,7 @@ const API = {
         }).then(response => response.json())
     },
     getSpecificEntry: (id) => {
-        console.log();
+        //console.log();
         return fetch(`${url}/${id}`)
             .then(response => response.json())
     },

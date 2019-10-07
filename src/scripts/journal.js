@@ -26,7 +26,6 @@ function createJournalEntry() {
 
 let entryId = ""
 document.addEventListener("click", (event) => {
-    console.log(event.target.className)
     if (event.target.id.startsWith === "recordButton") {
 
         //validate code .includes method- only takes one thng at a time. Will have to call it multiple times.
@@ -52,7 +51,6 @@ document.addEventListener("click", (event) => {
                 document.querySelector("#concepts").value = "";
                 document.querySelector("#journalEntry").value = "";
                 document.querySelector(".entryLog").innerHTML = "";
-                console.log("hello");
                 API.getJournalEntries()
                     .then(data => {
                         entriesDOM.renderJournalEntries(data)
@@ -60,7 +58,6 @@ document.addEventListener("click", (event) => {
             })
     } else if (event.target.id.startsWith("filterMood")) {
         let moody = event.target.value;
-        console.log(moody);
         API.getJournalEntries().then(data => {
             entriesDOM.filterMood(data, moody);
         })
@@ -73,7 +70,7 @@ document.addEventListener("click", (event) => {
         //5. then print it to the DOM 
 
         // get container that is holding my delete and edit button 
-        // clear donut-container before adding new donut
+        // clear entry-container before adding new entry
         console.log(event.target.id.split("--")[1]);
         document.querySelector(".entryLog").innerHTML = "";
         // Extract delete button id from button's id attribute
@@ -81,11 +78,11 @@ document.addEventListener("click", (event) => {
             .then((entry) => {
                 console.log(entry)
                 document.querySelector(".entryLog").innerHTML = "";
-                //  get all the donuts again
+                //  get all the entries again
                 API.getJournalEntries()
                     .then(entry => entriesDOM.renderJournalEntries(entry));
                 //entries.forEach(entry => {  // might NOT need this foreach
-                //  needs to send donut to DOM
+                //  needs to send entries to DOM
             })
     } else if (event.target.id.startsWith("editButton")) {
         //      console.log(editButton);  //Editing a single entry 
@@ -95,29 +92,27 @@ document.addEventListener("click", (event) => {
         // doc.innerHTML = ""
     } else if (event.target.className === "editRecordButton") {
         saveEditEntry(entryId)
-              // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
+        // Invoke the editForm function from editForm.js, splitting the content between -- and passing only the second [1] "element" 
     }
 })
-
+//defining the edit form fields
 const editFormFields = entryIdtoEdit => {
     let hiddenId = document.querySelector("#editedEntry")
     let dateInput = document.querySelector("#eJournalDate")
     let moodInput = document.querySelector("#eMood")
     let conceptsInput = document.querySelector("#eConcepts")
     let entryInput = document.querySelector("#eJournalEntry")
-
+    //calling the API and passing through the entries to edit
     API.getSpecificEntry(entryIdtoEdit).then(entry => {
-        console.log(entry)
         let entryId = entry.id;
         hiddenId.value = entryId;
         moodInput.value = entry.moodOfTheDay;
         dateInput.value = entry.dateOfEntry;
         conceptsInput.value = entry.conceptsCovered;
         entryInput.value = entry.entry;
-        console.log("entry.moodId is:", entry.moodOfTheDay)
     })
 }
-
+//saving the entries after they have been edited 
 function saveEditEntry(entryId) {
     let dateInput = document.querySelector("#eJournalDate")
     let moodInput = document.querySelector("#eMood")
@@ -130,14 +125,40 @@ function saveEditEntry(entryId) {
         moodOfTheDay: moodInput.value
     }
     API.editEntry(entryId, newEntry).then(response => response)
-    .then( () =>
-                document.querySelector(".entryLog").innerHTML = "")
-            .then( () => 
-                API.getJournalEntries()
-                )
-                .then(data => entriesDOM.renderJournalEntries(data))
+        .then(() => // calling the API and passing through both the entryID and the newEntry- this is what is passed through on the API page as well.
+            document.querySelector(".entryLog").innerHTML = "")
+        .then(() => //making sure that when the edit button is hit that the current entries do not duplicate on the page.
+            API.getJournalEntries()
+        ) // calling the journals API and editing the entry.
+        .then(data => entriesDOM.renderJournalEntries(data))
+    // postingt the new edit version of the entry to the page. 
 }
 
+//function to call keypress
+//use an eventlistener
+//search through the list of arrays of the entries when typing in key words
+//will need to use a for loop
+//const searchEntries = document.querySelector("#searchEntries")
+// function searchEntries() {
+//     console.log("search entries", searchEntries);
+// }
+const searchBox = document.querySelector("#searchBox");
+searchBox.addEventListener("keypress", (keyPressEvent) => {
+    if (keyPressEvent.charCode === 13) {
+        API.getJournalEntries()
+            .then(res => res.filter(entry =>
+                entry.conceptsCovered.includes(keyPressEvent.target.value)))
+            .then(res =>
+                entriesDOM.entriesFilter(res)
+            )
+    }
+})
+
+// API.getJournalEntries().then(res 
+//     => res.filter(entry => 
+//         entry.concepts.includes(keyPressEvent.target.value))).then(res 
+//             =>
+//     entriesDOM.conceptFilter(res)
 
 
 // make new obj, then pull obj from that API
